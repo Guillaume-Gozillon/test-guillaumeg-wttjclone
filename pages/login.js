@@ -41,10 +41,10 @@ export default function Login() {
       <SearchBar />
       <div>
         {user === null ? (
-          <div className='flex flex-col items-center bg-wttj-light-yellow'>
+          <div className='flex flex-col items-center bg-wttj-light-yellow pt-8'>
             <h1 className='text-2xl font-bold'>Se connecter</h1>
 
-            <div className='flex bg-white mt-8 rounded-xl px-8 mb-8 border'>
+            <div className='flex bg-white mt-8 rounded-xl px-8 mb-20 border'>
               <input
                 className='border-b outline-none'
                 type='email'
