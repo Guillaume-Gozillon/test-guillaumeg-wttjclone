@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { addDoc, collection, Timestamp } from '@firebase/firestore'
-import { auth, db, storage } from '../firebase-config'
+import { db, storage } from '../firebase-config'
 import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage'
 
 export default function Form() {
@@ -53,56 +53,72 @@ export default function Form() {
   }
 
   return (
-    <form className='flex flex-col items-center'>
-      <div className='mb-6'>
-        <label>Titre de l&apos;annonce :</label>
-        <input
-          required
-          className='border'
-          placeholder='Title...'
-          onChange={e => setTitle(e.target.value)}
-        />
+    <form className='flex flex-col items-center bg-wttj-light-yellow'>
+      <h2 className='mt-8 text-2xl font-bold'>
+        Postez votre annonce sur Welcome To The Jungle
+      </h2>
+      <div className='bg-white mt-8 rounded-xl p-8 mb-8 border'>
+        <div className='mb-6'>
+          <label className='mr-4 font-semibold'>
+            Titre de l&apos;annonce :
+          </label>
+          <input
+            required
+            className='border-b outline-none p-1'
+            placeholder='Titre'
+            onChange={e => setTitle(e.target.value)}
+          />
+        </div>
+        <div className='mb-6'>
+          <label className='mr-4 font-semibold'>
+            Nom de l&apos;entreprise :
+          </label>
+          <input
+            required
+            className='border-b outline-none p-1'
+            placeholder='Entreprise'
+            onChange={e => setCompanyName(e.target.value)}
+          />
+        </div>
+        <div className='mb-6'>
+          <label className='mr-4 font-semibold'>Lieu :</label>
+          <input
+            required
+            className='border-b outline-none p-1'
+            placeholder='Lieu de travail :'
+            onChange={e => setLocalisation(e.target.value)}
+          />
+        </div>
+        <div className='mb-6'>
+          <label className='mr-4 font-semibold'>Type de contrat :</label>
+          <input
+            required
+            className='border-b outline-none p-1'
+            placeholder='Contrat'
+            onChange={e => setContractType(e.target.value)}
+          />
+        </div>
+        <div className='mb-6'>
+          <label className='mr-6 font-semibold' htmlFor=''>
+            Image :
+          </label>
+          <input
+            required
+            type='file'
+            name='image'
+            accept='image/*'
+            onChange={e => setCoverImage(e.target.files[0])}
+          />
+        </div>
+        <div className='flex w-full justify-center'>
+          <button
+            className='bg-wttj-yellow p-4 m-4 font-bold text-white rounded-xl hover:shadow-lg'
+            onClick={e => createPost(e)}
+          >
+            Publier l'annonce
+          </button>
+        </div>
       </div>
-      <div className='mb-6'>
-        <label>Nom de l&apos;entreprise :</label>
-        <input
-          required
-          className='border'
-          placeholder='Title...'
-          onChange={e => setCompanyName(e.target.value)}
-        />
-      </div>
-      <div className='mb-6'>
-        <label>Lieu :</label>
-        <input
-          required
-          className='border'
-          placeholder='Lieu de travail :'
-          onChange={e => setLocalisation(e.target.value)}
-        />
-      </div>
-      <div className='mb-6'>
-        <label>Type de contrat :</label>
-        <input
-          required
-          className='border'
-          placeholder='Title...'
-          onChange={e => setContractType(e.target.value)}
-        />
-      </div>
-      <div className='mb-6'>
-        <label htmlFor=''>Image</label>
-        <input
-          required
-          type='file'
-          name='image'
-          accept='image/*'
-          onChange={e => setCoverImage(e.target.files[0])}
-        />
-      </div>
-      <button className='bg-wttj-yellow p-4 m-4' onClick={e => createPost(e)}>
-        Submit Post
-      </button>
     </form>
   )
 }
