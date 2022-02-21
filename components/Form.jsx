@@ -7,15 +7,12 @@ export default function Form() {
   const [title, setTitle] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [contractType, setContractType] = useState('')
+  const [localisation, setLocalisation] = useState('')
   const [image, setCoverImage] = useState(null)
-  const [logo, setLogo] = useState('')
   const [progress, setProgress] = useState(0)
   const [endSubmit, setEndsubmit] = useState(false)
-  const types = ['image/png', 'image.jpeg']
 
   const postsCollectionRef = collection(db, 'data')
-
-  console.log(image)
 
   const createPost = e => {
     e.preventDefault()
@@ -39,6 +36,7 @@ export default function Form() {
             title,
             companyName,
             contractType,
+            localisation,
             imageUrl: url,
             createdAt: Timestamp.now().toDate()
           })
@@ -75,6 +73,15 @@ export default function Form() {
         />
       </div>
       <div className='mb-6'>
+        <label>Lieu :</label>
+        <input
+          required
+          className='border'
+          placeholder='Lieu de travail :'
+          onChange={e => setLocalisation(e.target.value)}
+        />
+      </div>
+      <div className='mb-6'>
         <label>Type de contrat :</label>
         <input
           required
@@ -93,15 +100,6 @@ export default function Form() {
           onChange={e => setCoverImage(e.target.files[0])}
         />
       </div>
-      {/* <div className='mb-6'>
-        <label htmlFor=''>Logo</label>
-        <input
-          type='file'
-          name='image'
-          accept='image/*'
-          onChange={e => setLogo(e)}
-        />
-      </div> */}
       <button className='bg-wttj-yellow p-4 m-4' onClick={e => createPost(e)}>
         Submit Post
       </button>

@@ -13,9 +13,13 @@ export default function Header() {
   ]
 
   return (
-    <div className='sticky top-0 z-50 flex justify-between w-full border-b pt-2 px-16 items-center'>
+    <div className='sticky top-0 z-50 flex justify-between w-full border-b pt-2 px-16 items-center bg-white'>
       <div className='relative w-32 h-20 mx-8'>
-        <Image src={logo} layout='fill' objectFit='contain' />
+        <Link href='/'>
+          <a>
+            <Image src={logo} layout='fill' objectFit='contain' />
+          </a>
+        </Link>
       </div>
       <div className='mr-64'>
         <ul className='flex'>
