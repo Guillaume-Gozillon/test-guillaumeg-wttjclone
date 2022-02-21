@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
+import MainContent from '../components/MainContent'
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
 
       <Header />
       <SearchBar />
+      <MainContent />
     </div>
   )
 }
