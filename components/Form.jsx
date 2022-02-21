@@ -115,7 +115,7 @@ export default function Form() {
             className='bg-wttj-yellow p-4 m-4 font-bold text-white rounded-xl hover:shadow-lg'
             onClick={e => createPost(e)}
           >
-            Publier l'annonce
+            Publier l&apos;annonce
           </button>
         </div>
       </div>
